@@ -1,0 +1,10 @@
+class Solution:
+    def preorder(self, root: 'Node') -> List[int]:
+        if not root:
+            return []
+        res = []
+        res.append(root.val)
+        for s in root.children:
+            res += self.preorder(s)
+        return res
+        
