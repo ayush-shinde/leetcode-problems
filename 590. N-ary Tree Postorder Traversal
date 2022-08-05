@@ -1,0 +1,9 @@
+class Solution:
+    def postorder(self, root: 'Node') -> List[int]:
+        if not root: return []
+        if not root.children: 
+            return [root.val]
+        res = []
+        for c in root.children:
+            res += self.postorder(c)
+        return res + [root.val]
