@@ -1,0 +1,20 @@
+class Solution:
+    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        def lvs(root):
+            #node is a leaf
+            if root.left is None and root.right is None:
+                return [root.val]
+            #node has both left and right subtrees/nodes
+            elif root.left is not None and root.right is not None:
+                return lvs(root.left) + lvs(root.right)
+            #left node is null
+            elif root.right is not None:
+                return lvs(root.right)
+            #right node is null
+            elif root.left is not None:
+                return lvs(root.left)
+            else:
+                return False
+        
+        return lvs(root1) == lvs(root2)
+    
